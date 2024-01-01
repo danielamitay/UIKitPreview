@@ -2,6 +2,7 @@ import SwiftCompilerPlugin
 import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
+import SwiftUI
 
 /// Implementation of the `stringify` macro, which takes an expression
 /// of any type and produces a tuple containing the value of that expression
@@ -25,9 +26,27 @@ public struct StringifyMacro: ExpressionMacro {
     }
 }
 
+public struct ViewControllerMacro: DeclarationMacro {
+    public static func expansion(
+        of node: some SwiftSyntax.FreestandingMacroExpansionSyntax,
+        in context: some SwiftSyntaxMacros.MacroExpansionContext
+    ) throws -> [SwiftSyntax.DeclSyntax] {
+        return [
+                """
+                #Preview {
+                    Color.blue
+                }
+                """
+        ]
+    }
+
+
+}
+
 @main
 struct UIKitPreviewPlugin: CompilerPlugin {
     let providingMacros: [Macro.Type] = [
         StringifyMacro.self,
+        ViewControllerMacro.self
     ]
 }

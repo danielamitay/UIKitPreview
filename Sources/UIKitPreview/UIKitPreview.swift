@@ -9,3 +9,8 @@
 /// produces a tuple `(x + y, "x + y")`.
 @freestanding(expression)
 public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "UIKitPreviewMacros", type: "StringifyMacro")
+
+import UIKit
+
+@freestanding(declaration)
+public macro UIKitPreview(_ name: String? = nil, body: @escaping @MainActor () -> UIViewController) = #externalMacro(module: "UIKitPreviewMacros", type: "ViewControllerMacro")
