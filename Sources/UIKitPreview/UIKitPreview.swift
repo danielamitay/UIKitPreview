@@ -14,3 +14,6 @@ import UIKit
 
 @freestanding(declaration)
 public macro UIKitPreview(_ name: String? = nil, body: @escaping @MainActor () -> UIViewController) = #externalMacro(module: "UIKitPreviewMacros", type: "ViewControllerMacro")
+
+@freestanding(declaration)
+public macro Preview(_ name: String? = nil, body: @escaping @MainActor () -> UIViewController) = #externalMacro(module: "UIKitPreviewMacros", type: "ViewControllerMacro")
