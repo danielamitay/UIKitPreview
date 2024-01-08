@@ -39,14 +39,28 @@ public struct ViewControllerMacro: DeclarationMacro {
                 """
         ]
     }
+}
 
-
+public struct ViewMacro: DeclarationMacro {
+    public static func expansion(
+        of node: some SwiftSyntax.FreestandingMacroExpansionSyntax,
+        in context: some SwiftSyntaxMacros.MacroExpansionContext
+    ) throws -> [SwiftSyntax.DeclSyntax] {
+        return [
+                """
+                #Preview {
+                    Color.red
+                }
+                """
+        ]
+    }
 }
 
 @main
 struct UIKitPreviewPlugin: CompilerPlugin {
     let providingMacros: [Macro.Type] = [
         StringifyMacro.self,
-        ViewControllerMacro.self
+        ViewControllerMacro.self,
+        ViewMacro.self,
     ]
 }

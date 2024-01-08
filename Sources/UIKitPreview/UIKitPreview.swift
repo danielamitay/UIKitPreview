@@ -13,7 +13,7 @@ public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "U
 import UIKit
 
 @freestanding(declaration)
-public macro UIKitPreview(_ name: String? = nil, body: @escaping @MainActor () -> UIViewController) = #externalMacro(module: "UIKitPreviewMacros", type: "ViewControllerMacro")
+public macro Preview(_ name: String? = nil, body: @escaping @MainActor () -> UIViewController) = #externalMacro(module: "UIKitPreviewMacros", type: "ViewControllerMacro")
 
 @freestanding(declaration)
-public macro Preview(_ name: String? = nil, body: @escaping @MainActor () -> UIViewController) = #externalMacro(module: "UIKitPreviewMacros", type: "ViewControllerMacro")
+public macro Preview(_ name: String? = nil, body: @escaping @MainActor () -> UIView) = #externalMacro(module: "UIKitPreviewMacros", type: "ViewMacro")
